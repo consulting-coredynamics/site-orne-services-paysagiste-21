@@ -2,34 +2,34 @@
   "nom_entreprise": "Orne Services",
   "metier": "Paysagiste",
   "ville": "Moutiers",
-  "telephone": "03 82 20 29 95",
+  "telephone": "0685349669",
   "courriel": "contact@orne-services-paysagiste.fr",
   "palette_couleurs": {
-    "primary": "#38BDF8",
-    "accent": "#FF6B2B",
-    "background": "#0B1114",
-    "surface": "rgba(255, 255, 255, 0.035)"
+    "primary": "#34D399",
+    "accent": "#D97706",
+    "background": "#090D0B",
+    "surface": "#111A15"
   },
   "textes_optimises": {
-    "hero_h1": "Paysagiste à Moutiers — Orne Services",
-    "hero_sub": "Orne Services façonne et entretient vos jardins d'exception à Moutiers, révélant la beauté brute de la nature toute l'année.",
-    "badge_reassurance": "01 / Savoir-Faire Local",
-    "service_1_titre": "Création de Jardins d'Architecte",
-    "service_1_desc": "Conception et aménagement de paysages structurés associant pierre naturelle, essences sélectionnées et jeux d'eau.",
-    "service_2_titre": "Maçonnerie Paysagère de Prestige",
-    "service_2_desc": "Façonnage de terrasses en ardoise clivée, murets en pierre sèche et allées géométriques haut de gamme.",
-    "service_3_titre": "Soin et Évolution Saisonnier",
-    "service_3_desc": "Programmes de taille chirurgicale et d'entretien pour préserver la structure de votre jardin de l'hiver à l'été.",
-    "texte_a_propos": "Basé à Moutiers, Orne Services incarne la haute couture du paysage. Nous domptons les éléments pour concevoir des espaces extérieurs vivants, pensés comme de véritables extensions architecturales de votre demeure.",
-    "avis_1_texte": "Une entreprise sérieuse, soucieuse du travail bien fait et d'une réputation irréprochable.",
-    "avis_1_auteur": "Jean-Michel P.",
-    "avis_2_texte": "Finitions d'une précision chirurgicale sur ma terrasse en pierre et mes massifs.",
-    "avis_2_auteur": "Isabelle D."
+    "hero_h1": "L'Art des Jardins d'Exception à Moutiers",
+    "hero_sub": "Création de terrasses de prestige et de parcs paysagers d'inspiration classique pour sublimer votre patrimoine extérieur.",
+    "badge_reassurance": "Conception Haute Couture • Savoir-Faire Rigoureux • Matériaux Nobles",
+    "service_1_titre": "Terrasses en Pierre & Bois Nobles",
+    "service_1_desc": "Conception sur-mesure et pose millimétrée de terrasses de prestige en pierre de taille ou essences de bois précieux.",
+    "service_2_titre": "Architecture Paysagère Classique",
+    "service_2_desc": "Création de jardins à la française aux perspectives parfaites, parterres structurés et alignements symétriques de maître.",
+    "service_3_titre": "Harmonie des Quatre Saisons",
+    "service_3_desc": "Sélection végétale de haute volée pensée pour offrir un spectacle visuel saisissant et structuré tout au long de l'année.",
+    "texte_a_propos": "Chez Orne Services, nous croyons que votre jardin est le prolongement naturel de votre art de vivre. Installés à Moutiers, nous façonnons des espaces extérieurs d'exception en mariant la rigueur géométrique des parcs de maître à la française à la noblesse des matériaux bruts. Chaque terrasse, chaque allée de pierre, chaque tracé végétal est conçu comme une œuvre d'art intemporelle.\n\nNotre réputation repose sur le culte du détail, l'amour du travail bien fait et la sélection rigoureuse d'essences végétales et de pierres naturelles haut de gamme. Nous orchestrons les volumes et la lumière pour donner vie à des compositions extérieures spectaculaires, élégantes et pérennes.",
+    "avis_1_texte": "Le travail réalisé sur mon jardin est exceptionnel, super enrichissant pour l'esprit et un véritable havre de paix au quotidien ! Une entreprise sérieuse et soucieuse du travail bien fait.",
+    "avis_1_auteur": "Jean-Marc L.",
+    "avis_2_texte": "Rien à redire. Orne Services a su transformer notre terrasse avec une rigueur digne des plus grands domaines. Une réputation d'excellence amplement méritée.",
+    "avis_2_auteur": "Hélène D."
   },
   "gsap_config": {
     "total_frames": 96,
-    "fps": 24,
-    "scrub_factor": 0.1,
-    "pin_duration": "450vh"
+    "fps": 16,
+    "scrub_factor": 0.25,
+    "pin_duration": "220%"
   }
 }
