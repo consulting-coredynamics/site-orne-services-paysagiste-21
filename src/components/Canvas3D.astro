@@ -1,0 +1,124 @@
+---
+import config from '../data/site-config.json';
+const { textes_optimises, gsap_config } = config;
+---
+<div class="animation-container" id="scroll-trigger-area" style="position: relative; height: 450vh;">
+  <div class="sticky-wrapper" style="position: sticky; top: 0; left: 0; width: 100vw; height: 100dvh; overflow: hidden;">
+    <canvas id="canvas-3d" style="position: absolute; top: 0; left: 0; width: 100vw; height: 100dvh; display: block; z-index: 1; pointer-events: none;"></canvas>
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; background: radial-gradient(circle at 50% 30%, transparent 55%, rgba(11, 17, 20, 0.4) 100%);"></div>
+
+    <div class="text-overlay">
+      <div class="step-card active" id="card-1">
+        <span class="step-tag mono">{textes_optimises.badge_reassurance}</span>
+        <h1 class="serif">{textes_optimises.hero_h1}</h1>
+        <p>{textes_optimises.hero_sub}</p>
+      </div>
+    </div>
+
+    <div class="text-overlay">
+      <div class="step-card" id="card-2">
+        <span class="step-tag mono">02 / Expertise</span>
+        <h2 class="serif">{textes_optimises.service_1_titre}</h2>
+        <p>{textes_optimises.service_1_desc}</p>
+      </div>
+    </div>
+
+    <div class="text-overlay">
+      <div class="step-card" id="card-3">
+        <span class="step-tag mono">03 / Précision</span>
+        <h2 class="serif">{textes_optimises.service_2_titre}</h2>
+        <p>{textes_optimises.service_2_desc}</p>
+      </div>
+    </div>
+
+    <div class="text-overlay">
+      <div class="step-card" id="card-4">
+        <span class="step-tag mono">04 / Engagement</span>
+        <h2 class="serif">{textes_optimises.service_3_titre}</h2>
+        <p>{textes_optimises.service_3_desc}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .text-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none !important; display: flex; align-items: flex-end; justify-content: center;
+    padding: 0 8vw 7vh; z-index: 3;
+  }
+  .step-card {
+    position: relative; max-width: 680px; width: 100%; text-align: center;
+    opacity: 0; filter: blur(6px); transition: opacity 0.8s ease, filter 0.8s ease;
+  }
+  .step-card.active { opacity: 1; filter: blur(0px); }
+  .step-tag { font-size: 0.85rem; color: var(--primary-cyan); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 8px; display: inline-block; font-weight: 700; }
+  .step-card h1, .step-card h2 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); margin-bottom: 12px; color: #FFFFFF; }
+  .step-card p { color: var(--text-muted); font-size: 1rem; max-width: 520px; margin: 0 auto; }
+</style>
+
+<script is:inline define:vars={{ totalFrames: gsap_config.total_frames || 96 }}>
+  window.addEventListener('DOMContentLoaded', () => {
+    gsap.registerPlugin(ScrollTrigger);
+    const canvas = document.getElementById("canvas-3d");
+    if (!canvas) return;
+    const context = canvas.getContext("2d", { alpha: false });
+
+    const isMobile = window.innerWidth <= 768;
+    const baseUrl = isMobile ? '/assets/mobile/' : '/assets/desktop/';
+    const currentFrame = i => `${baseUrl}frame_${(i + 1).toString().padStart(4, '0')}.webp`;
+
+    const sequence = { frame: 0 };
+    const images = [];
+
+    function resizeCanvas() {
+      const dpr = isMobile ? 1.5 : 2;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      render();
+    }
+
+    function render() {
+      const img = images[sequence.frame];
+      if (!img || !img.complete) return;
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      const ratio = Math.max(canvas.width / img.naturalWidth, canvas.height / img.naturalHeight);
+      const w = img.naturalWidth * ratio;
+      const h = img.naturalHeight * ratio;
+      context.drawImage(img, (canvas.width - w) / 2, (canvas.height - h) / 2, w, h);
+    }
+
+    for (let i = 0; i < totalFrames; i++) {
+      const img = new Image();
+      img.onload = () => { if (i === 0) render(); };
+      img.src = currentFrame(i);
+      images.push(img);
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    gsap.to(sequence, {
+      frame: totalFrames - 1,
+      snap: "frame",
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#scroll-trigger-area",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.1,
+        onUpdate: () => {
+          render();
+          const f = Math.round(sequence.frame);
+          const step = totalFrames / 4;
+          document.getElementById('card-1')?.classList.toggle('active', f < step);
+          document.getElementById('card-2')?.classList.toggle('active', f >= step && f < step * 2);
+          document.getElementById('card-3')?.classList.toggle('active', f >= step * 2 && f < step * 3);
+          document.getElementById('card-4')?.classList.toggle('active', f >= step * 3);
+        }
+      }
+    });
+  });
+</script>

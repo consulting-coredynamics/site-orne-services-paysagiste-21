@@ -1,0 +1,7 @@
+---
+import config from '../data/site-config.json';
+const { nom_entreprise } = config;
+---
+<footer style="border-top: 1px solid var(--border-light); padding: 48px 24px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+  &copy; {new Date().getFullYear()} {nom_entreprise} — Tous droits réservés.
+</footer>

@@ -1,0 +1,69 @@
+---
+import config from '../data/site-config.json';
+const { nom_entreprise, ville, telephone } = config;
+---
+<section id="contact" style="padding: 96px 24px; border-top: 1px solid var(--border-light);">
+  <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px;">
+    <div style="background: var(--card-surface); padding: 40px 32px; border: 1px solid var(--border-light); border-radius: var(--radius);">
+      <h3 class="serif" style="font-size: 1.5rem; margin-bottom: 12px;">Contactez-nous</h3>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">Un projet à réaliser ? Obtenez un devis gratuit sous 24h.</p>
+      <ul style="list-style: none;">
+        <li style="padding: 12px 0; border-bottom: 1px dashed var(--border-light);">
+          <span class="mono" style="font-size: 0.75rem; color: var(--primary-cyan);">TÉLÉPHONE DIRECT</span><br>
+          <a href={`tel:${telephone}`} style="color: var(--accent-orange); font-weight: 600; text-decoration: none;">{telephone}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div style="background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%); padding: 44px 36px; border: 1px solid var(--border-light); border-radius: 12px;">
+      <form id="contact-form-dual">
+        <div style="margin-bottom: 18px;">
+          <label class="mono" style="display: block; font-size: 0.75rem; color: var(--primary-cyan); margin-bottom: 8px;">VOTRE NOM</label>
+          <input type="text" id="lead-nom" required style="width: 100%; padding: 14px; background: rgba(0,0,0,0.45); border: 1px solid var(--border-light); color: #FFF; border-radius: var(--radius);">
+        </div>
+        <div style="margin-bottom: 18px;">
+          <label class="mono" style="display: block; font-size: 0.75rem; color: var(--primary-cyan); margin-bottom: 8px;">VOTRE TÉLÉPHONE</label>
+          <input type="tel" id="lead-tel" required style="width: 100%; padding: 14px; background: rgba(0,0,0,0.45); border: 1px solid var(--border-light); color: #FFF; border-radius: var(--radius);">
+        </div>
+        <div style="margin-bottom: 18px;">
+          <label class="mono" style="display: block; font-size: 0.75rem; color: var(--primary-cyan); margin-bottom: 8px;">VOTRE PROJET</label>
+          <textarea id="lead-msg" rows="3" required style="width: 100%; padding: 14px; background: rgba(0,0,0,0.45); border: 1px solid var(--border-light); color: #FFF; border-radius: var(--radius);"></textarea>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <button type="button" id="btn-email" style="padding: 14px; background: rgba(255,255,255,0.08); color: #FFF; border: 1px solid var(--border-light); border-radius: var(--radius); cursor: pointer; font-weight: 600;">Envoyer par Mail</button>
+          <button type="button" id="btn-wa" style="padding: 14px; background: #25D366; color: #FFF; border: none; border-radius: var(--radius); cursor: pointer; font-weight: 600;">WhatsApp Direct</button>
+        </div>
+      </form>
+      <div id="success-msg" style="display: none; color: #4ade80; text-align: center; margin-top: 24px; font-weight: 600;">✅ Demande transmise avec succès !</div>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{ nomEntreprise: nom_entreprise, telephoneArtisan: telephone, villeArtisan: ville }}>
+  const WEBHOOK_URL = 'https://overeater-hastiness-unbolted.ngrok-free.dev/webhook/client-lead';
+
+  document.getElementById('btn-email')?.addEventListener('click', () => {
+    const nom = document.getElementById('lead-nom')?.value;
+    const tel = document.getElementById('lead-tel')?.value;
+    const msg = document.getElementById('lead-msg')?.value;
+    if (!nom || !tel || !msg) return alert('Veuillez remplir tous les champs');
+
+    fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nom, telephone: tel, message: msg, artisan_cible: nomEntreprise, ville_cible: villeArtisan, source: 'Site Web Astro' })
+    }).then(() => {
+      document.getElementById('contact-form-dual').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    });
+  });
+
+  document.getElementById('btn-wa')?.addEventListener('click', () => {
+    const nom = document.getElementById('lead-nom')?.value || '';
+    const tel = document.getElementById('lead-tel')?.value || '';
+    const msg = document.getElementById('lead-msg')?.value || '';
+    const telClient = telephoneArtisan.replace(/\D/g, '').replace(/^0/, '33');
+    const text = encodeURIComponent(`Bonjour ${nomEntreprise},\nJe suis ${nom} (${tel}).\nMon projet à ${villeArtisan} : ${msg}`);
+    window.open(`https://wa.me/${telClient}?text=${text}`, '_blank');
+  });
+</script>

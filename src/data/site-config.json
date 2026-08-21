@@ -1,0 +1,35 @@
+{
+  "nom_entreprise": "Orne Services",
+  "metier": "Paysagiste",
+  "ville": "Moutiers",
+  "telephone": "03 82 20 29 95",
+  "courriel": "contact@orne-services-paysagiste.fr",
+  "palette_couleurs": {
+    "primary": "#38BDF8",
+    "accent": "#FF6B2B",
+    "background": "#0B1114",
+    "surface": "rgba(255, 255, 255, 0.035)"
+  },
+  "textes_optimises": {
+    "hero_h1": "Paysagiste à Moutiers — Orne Services",
+    "hero_sub": "Orne Services façonne et entretient vos jardins d'exception à Moutiers, révélant la beauté brute de la nature toute l'année.",
+    "badge_reassurance": "01 / Savoir-Faire Local",
+    "service_1_titre": "Création de Jardins d'Architecte",
+    "service_1_desc": "Conception et aménagement de paysages structurés associant pierre naturelle, essences sélectionnées et jeux d'eau.",
+    "service_2_titre": "Maçonnerie Paysagère de Prestige",
+    "service_2_desc": "Façonnage de terrasses en ardoise clivée, murets en pierre sèche et allées géométriques haut de gamme.",
+    "service_3_titre": "Soin et Évolution Saisonnier",
+    "service_3_desc": "Programmes de taille chirurgicale et d'entretien pour préserver la structure de votre jardin de l'hiver à l'été.",
+    "texte_a_propos": "Basé à Moutiers, Orne Services incarne la haute couture du paysage. Nous domptons les éléments pour concevoir des espaces extérieurs vivants, pensés comme de véritables extensions architecturales de votre demeure.",
+    "avis_1_texte": "Une entreprise sérieuse, soucieuse du travail bien fait et d'une réputation irréprochable.",
+    "avis_1_auteur": "Jean-Michel P.",
+    "avis_2_texte": "Finitions d'une précision chirurgicale sur ma terrasse en pierre et mes massifs.",
+    "avis_2_auteur": "Isabelle D."
+  },
+  "gsap_config": {
+    "total_frames": 96,
+    "fps": 24,
+    "scrub_factor": 0.1,
+    "pin_duration": "450vh"
+  }
+}

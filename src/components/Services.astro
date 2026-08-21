@@ -1,0 +1,45 @@
+---
+import config from '../data/site-config.json';
+const { metier, ville, textes_optimises } = config;
+---
+<section class="section-content" id="services" style="padding: 96px 24px; border-top: 1px solid var(--border-light);">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <span class="mono" style="color: var(--accent-orange); text-transform: uppercase; font-weight: 600;">Nos expertises</span>
+    <h2 class="serif" style="font-size: 2.4rem; margin-top: 8px;">Prestations de {metier} à {ville}</h2>
+
+    <div style="margin-top: 44px; border-top: 1px solid var(--border-light);">
+      <article style="display: grid; grid-template-columns: 72px 1fr; gap: 28px; padding: 38px 4px; border-bottom: 1px solid var(--border-light);">
+        <div style="width: 60px; height: 60px; border-radius: 50%; border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; color: var(--primary-cyan); background: var(--card-surface);">
+          <svg width="26" height="26" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <div>
+          <span class="mono" style="font-size: 0.72rem; text-transform: uppercase; color: var(--accent-orange); font-weight: 600;">{metier}</span>
+          <h3 class="serif" style="font-size: 1.5rem; margin-bottom: 10px;">{textes_optimises.service_1_titre}</h3>
+          <p style="color: var(--text-muted);">{textes_optimises.service_1_desc}</p>
+        </div>
+      </article>
+
+      <article style="display: grid; grid-template-columns: 72px 1fr; gap: 28px; padding: 38px 4px; border-bottom: 1px solid var(--border-light);">
+        <div style="width: 60px; height: 60px; border-radius: 50%; border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; color: var(--primary-cyan); background: var(--card-surface);">
+          <svg width="26" height="26" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+        </div>
+        <div>
+          <span class="mono" style="font-size: 0.72rem; text-transform: uppercase; color: var(--accent-orange); font-weight: 600;">{metier}</span>
+          <h3 class="serif" style="font-size: 1.5rem; margin-bottom: 10px;">{textes_optimises.service_2_titre}</h3>
+          <p style="color: var(--text-muted);">{textes_optimises.service_2_desc}</p>
+        </div>
+      </article>
+
+      <article style="display: grid; grid-template-columns: 72px 1fr; gap: 28px; padding: 38px 4px; border-bottom: 1px solid var(--border-light);">
+        <div style="width: 60px; height: 60px; border-radius: 50%; border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; color: var(--primary-cyan); background: var(--card-surface);">
+          <svg width="26" height="26" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div>
+          <span class="mono" style="font-size: 0.72rem; text-transform: uppercase; color: var(--accent-orange); font-weight: 600;">{metier}</span>
+          <h3 class="serif" style="font-size: 1.5rem; margin-bottom: 10px;">{textes_optimises.service_3_titre}</h3>
+          <p style="color: var(--text-muted);">{textes_optimises.service_3_desc}</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
